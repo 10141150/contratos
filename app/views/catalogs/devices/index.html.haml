@@ -1,0 +1,44 @@
+.container_general  
+  .title_devices
+    %h1
+      = t('.title_device')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'devices', name: 'add_device', helper: new_catalogs_device_path }
+  .cuerpo_devices
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th
+              = t('.name')
+            %th 
+              = t('.unam_stock_number')
+            %th 
+              = t('.location_id')
+            %th
+            %th
+            %th
+        %tbody
+          - @catalogs_devices.each do |catalogs_device|
+            %tr
+              %td{title: catalogs_device.name}= catalogs_device.short_name
+              %td= catalogs_device.unam_stock_number
+              %td= catalogs_device.location.department 
+              %td
+                = link_to '', catalogs_device, class: "btn btn-sm btn-tss fa fa-eye", title: t('see'), remote: true
+              %td
+                = link_to '', edit_catalogs_device_path(catalogs_device), class: "btn btn-sm btn-tss fa fa-pencil-square-o", title: t('edit'), remote: true
+              %td
+                = link_to '', catalogs_device_delete_path(id: catalogs_device, viewer: 'devices'), class: "btn btn-sm btn-tss fa fa-trash-o", title: t('delete'), remote: true
+  .paginacion
+    .apple_pagination 
+      = will_paginate @catalogs_devices, :container => false
+    %br
+    /= link_to t('.add_device'), new_catalogs_device_path, class:"btn btn-tss", remote: true
+
+  #device-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-device-modal.modal-content
+  #delete-modal.modal.fade
+    .modal-dialog
+      #inner-delete-modal.modal-content

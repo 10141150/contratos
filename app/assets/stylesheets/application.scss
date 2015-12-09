@@ -1,0 +1,129 @@
+/*
+}http://belleviewchristian.com/wp-content/uploads/2014/03/blue-wallpaper-background-texture-checkbox.jpg
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'font-awesome';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+html,
+body {
+  height: 100%;
+  background-color:white;
+}
+#header{
+    background-image :url('http://www.neuroespacio.com/wp-content/uploads/2012/01/inst_instneurobio2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width:100%; 
+    height: 60px;
+}
+.backcontainer {
+    background-image:url('http://carloscavazos.com/wp-content/uploads/background-navy-blue-1600x900.jpg'); 
+    background-repeat: repeat-y;
+    background-size: 100%
+      }
+.container {
+    background-color:white;
+    height: 1100px;
+    padding: 10px;
+}
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+.text-center {
+    background-color: white;
+    height: 60px;
+}
+.containerfooter{
+  color: white;
+  width: 100%;
+  padding: 15px 15px; 
+  background-color: black;
+}
+.btn-ttc, a:hover{
+  background-color: rgb(50,76,115);
+  color: white;}
+.btn-ttc:visited,
+.btn-ttc:hover,
+.btn-ttc:active{
+  color: white;
+  background-color: rgb(156,198,227);
+}
+.texto{
+  float: left;
+  padding-left: 8px;
+  color: black;
+  text-align: justify;
+  font-size: 1em;
+  border-style: groove;
+  border-width: 5px;
+  border-color: rgb(241,164,40);
+  width: 100%;
+  height: 100%;
+}
+.btn-tss, a:hover{
+  background-color: rgb(52,142,211);
+  color: white;}
+.btn-tss:visited,
+.btn-tss:hover,
+.btn-tss:active{
+  color:white;
+  border:1px solid rgb(41,49,164);
+}
+.modal-header {
+  background-color: rgb(19,62,210);
+  color: white;
+}
+.apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span{
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      color: rgb(53,143,212);
+      background-color: #e0e0e0;
+      text-decoration: underline;
+      -moz-border-radius: 1em;
+      -webkit-border-radius: 1em;
+      border-radius: 1em; }
+.div_modal{
+  overflow: scroll;
+}
+.cuerpo_file_load{
+  padding-left: 30%;
+  padding-right: 30%;
+}

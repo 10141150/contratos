@@ -1,0 +1,2 @@
+$('#supplier').html("#{escape_javascript(select_tag 'supplier', options_from_collection_for_select(@catalog_supplier, "id", "business_name"), include_blank: "Seleccione Proveedor...")}");
+$('#contract_param_no').html("#{escape_javascript(select_tag 'contract_param_no', options_from_collection_for_select(@system_contract, "id", "contract_no"), include_blank: "Seleccione Contrato...")}");

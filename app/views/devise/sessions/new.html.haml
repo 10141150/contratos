@@ -1,0 +1,24 @@
+.container_session
+  .container_login
+    .tittle_session
+      %h2
+        %i.fa.fa-sign-in
+        = t('.title_login')
+    .login
+      - if flash[:notice]
+        %p.alert.alert-success
+          %i.fa.fa-check
+          = flash[:notice]
+      - if flash[:alert]
+        %p.alert.alert-danger
+          %i.fa.fa-exclamation-triangle
+          = flash[:alert] 
+
+      = simple_form_for resource, as: resource_name, html: {class: 'form-horizontal'}, wrapper: :horizontal_form, url: session_path(resource_name) do |f|
+        = f.error_notification
+        = f.input :login, label: t('.login'),autofocus: true
+        = f.input :password, label: t('.password'),autocomplete: :off
+        - if devise_mapping.rememberable?
+          = f.input :remember_me, label: t('.remember_me')
+        =f.button :submit, t('.btn_login'), class:"btn btn-default"
+      /= render "devise/shared/links"

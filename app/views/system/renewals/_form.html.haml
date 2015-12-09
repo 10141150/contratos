@@ -1,0 +1,21 @@
+.container-fluid
+  = simple_form_for @system_renewal, remote: true, html: {class: 'form-horizontal'}, wrapper: :horizontal_form do |f|
+
+    = f.error_notification
+    - if @contract_id.nil? || @contract_id.empty?
+      = f.association :contract, label_method: :contract_no, value_method: :id
+    - else
+    = f.input :contract_id, :input_html => { :value => @contract_id}
+    = f.input :start_date, wrapper_html: { class: 'form-inline' }
+    = f.input :end_date, wrapper_html: { class: 'form-inline' }
+    = f.input :monto, wrapper_html: { class: 'form-inline' }
+    = f.label t('.notification_date'), wrapper_html: { class: 'form-inline' }
+    = text_field_tag "notification_date", ""
+    %br/
+    .modal-footer
+      = f.button :submit, t('save'), class:"btn btn-sm btn-tss col-md-3 col-md-offset-3", data: {disable_with: "Submitting..."}
+      - if @eureka.nil? == false then
+        = link_to t('back'), system_renewals_path, class:"btn btn-sm btn-tss"
+      - else
+        = link_to t('show'), @system_renewal, remote: true, class:"btn btn-sm btn-tss"
+      = link_to t('back'), system_contracts_path, class:"btn btn-sm btn-tss"

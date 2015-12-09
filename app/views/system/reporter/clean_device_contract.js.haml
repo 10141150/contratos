@@ -1,0 +1,2 @@
+$('#device').html("#{escape_javascript(select_tag 'device', options_from_collection_for_select(@catalog_device, "id", "name"), include_blank: "Seleccione Equipo...")}");
+$('#contract_param_no').html("#{escape_javascript(select_tag 'contract_param_no', options_from_collection_for_select(@system_contract, "id", "contract_no"), include_blank: "Seleccione Contrato...")}");

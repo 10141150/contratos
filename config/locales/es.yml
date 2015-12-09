@@ -1,0 +1,498 @@
+es:
+  pdf:
+    title_pdf: Reporte general de Contratos
+    device_id: Nombre de Equipo
+    supplier_id: Proveedor
+    contract_no: No. de Contrato
+    start_date: Fecha de inicio
+    end_date: Fecha de fin
+  configure:
+    name_technical_secretary: 
+      name: 'Nombre del Secretario Técnico: '
+      hint: 'Nombre actual del encargado '
+    e_mail_technical_secretary: 
+      name: 'Correo electrónico del Secretario Técnico: '
+      hint: 'Correo electrónico del encargado actual '
+    truncate_length:
+      name: 'Número de caracteres: '
+      hint: 'Caracteres mostrados en pantalla de información'
+    notification_time:
+      name: 'Tiempo de notificación (días): '
+      hint: 'Tiempo previo a verificar una expiración de contrato'
+    developper_id: 
+      name: 'ID de desarrollador: '
+      hint: 'Datos asociados a la cuenta en Google Calendar'
+    developper_key:
+      name: 'Llave de desarrollador: '
+      hint: 'Datos asociados a la cuenta en Google Calendar'
+    key_path_p12:
+      name: 'Ruta del archivo p12: '
+      hint: 'Localización del archivo p12 en'
+    developper_email:
+      name: 'Correo de desarrollador: '
+      hint: 'Datos asociados a la cuenta en Google Calendar'
+    calendar_id:
+      name: 'ID de calendario: '
+      hint: 'Correo electrónico en donde se encuentra el calendario disponible.'
+  catalogs:
+    suppliers:
+      create:
+        created: Proveedor fue agregado exitosamente.
+      update:
+        updated: Proveedor fue actualizado exitosamente.
+      destroy:
+        destroyed: Proveedor fue eliminado exitosamente.
+      index:
+        title_supplier: Proveedores
+        business: Nombre de Compañía
+        contact: Contacto
+        phone: Télefono
+        phone_office: Teléfono de oficina
+        email: Correo electronico
+      show:
+        title_info_supplier: Informacion de Proveedor
+        business: 'Nombre de Compañía:'
+        contact: 'Contacto:'
+        phone: 'Teléfono:'
+        phone_office: 'Teléfono de oficina:'
+        email: 'Correo electrónico:'
+      edit:
+        title_edit_supplier: Editar Proveedor
+      new:
+        title_new_supplier: Proveedor nuevo
+    locations:
+      create:
+        created: Ubicación fue agregada exitosamente.
+      update:
+        updated: Ubicación fue actualizada exitosamente.
+      destroy:
+        destroyed: Ubicación fue eliminada exitosamente.
+      index:
+        title_location: Departamentos
+        department: Departamento
+        responsible: Responsable
+        email: Correo electrónico        
+      show:
+        title_info_location: Informacion de Ubicación
+        department: 'Departamento:'
+        responsible: 'Responsable:'
+        email: 'Correo electrónico:'
+        add_location: Agregar sitio
+      edit:
+        title_edit_location: Editar ubicación
+      new:
+        title_new_location: Ubicación nueva
+    devices:
+      create: 
+        created: Equipo fue agregado exitosamente.
+      update:
+        updated: Equipo fue actualizado exitosamente.
+      destroy:
+        destroyed: Equipo fue eliminado exitosamente.
+      form:
+        department: 'Departamento:'
+      index:
+        title_device: Equipos
+        name: Nombre de Equipo
+        unam_stock_number: No. de inventario
+        location_id: Departamento        
+      show:
+        title_info_device: Información de Equipo
+        name: 'Nombre de Equipo:'
+        unam_stock_number: 'No. de inventario:'
+        location_id: 'Departamento:'
+      edit:
+        title_edit_device: Editar Equipo
+      new:
+        title_new_device: Equipo nuevo
+
+  system:
+    contracts:
+      create: 
+        created: Contrato fue agregado exitosamente.
+      update:
+        updated: Contrato fue actualizado exitosamente.
+      destroy:
+        destroyed: Contrato fue eliminado exitosamente.
+      index:
+        title_contract: Lista de Contratos
+        device: Equipo
+        supplier: Proveedor
+        contract_no: No. de Contrato
+        description: Descripción
+        monto: Monto
+        add_visit: Agregar visita
+        renew_contract: Renovar contrato
+        download_pdf: Descargar PDF
+        start_date: Fecha inicial
+        end_date: Fecha final
+        to_expire: Pronto a expirar
+        active: Vigente
+        finished: Expirado
+      show:
+        title_info_contract: Información de Contrato
+        device: 'Equipo:'
+        description: 'Descripción:'
+        supplier: 'Proveedor:'
+        monto: 'Monto:'
+        start_date: 'Fecha inicio'
+        end_date: 'Fecha final'
+        contract_no: 'No. de Contrato:'
+        visit_date: Fecha de Visita
+        to_expire: Pronto a expirar
+        active: Vigente
+        finished: Expirado
+        visited: Visita realizada
+        not_visited: Visita no realizada
+        msg_expired: El contrato se encuentra vencido.
+      edit:
+        title_edit_contract: Editar Contrato
+      new:
+        title_new_contract: Contrato nuevo
+      form:
+        start_date: 'Fecha inicial:'
+        end_date: 'Fecha final:'
+        device: 'Nombre del Equipo:'
+        supplier: 'Proveedor:'
+        monto: 'Monto:'
+    siteviews:
+      create: 
+        created: Visita fue agregado exitosamente.
+      update:
+        updated: Visita fue actualizado exitosamente.
+      destroy:
+        destroyed: Visita fue eliminado exitosamente.
+      index:
+        title_siteview: Visitas
+        renewal_id: Contrato
+        visit_date: Fecha de Visita
+        completed: Status de Visita
+      show:
+        title_info_siteview: Información de Visita
+        renewal_id: 'Contrato:'
+        visit_date: 'Fecha de Visita:'
+        completed: 'Status de Visita:'        
+      edit:
+        title_edit_siteview: Editar visita
+      new:
+        title_new_siteview: Visita nueva        
+      form:
+        renewal: Renovación
+        remember_day: 'Recordarme el día:'
+        email_extra: 'Correos electrónicos adicionales a notificar: '
+    renewals:
+      index:
+        title_renewals: Renovaciones de Contrato
+        contract: Contrato
+        start_date: Fecha inicial
+        end_date: Fecha final
+        device: Nombre de Equipo
+        supplier: Proveedor
+      show:
+        title_info_renewal: Información de Contrato Renovado
+        contract_no: 'No. de Contrato:'
+        start_date: 'Fecha inicial:'
+        end_date: 'Fecha final:'
+        monto: 'Monto:'
+      edit:
+        title_edit_renewal: Editar Contrato Renovado
+      new:
+        title_new_renewal: Agregar Renovación de Contrato
+      form:
+        notification_date: 'Notificar la expiración del contrato:'
+    configuration:
+      configure:
+        title_configure: 'Configuraciones del sistema'
+      save:
+        title_save: 'Configuraciones del sistema'
+        current: 'Archivo actualizado'
+    reporter:
+      index:
+        title_reporter: 'Generador de reportes'
+        device: 'Nombre de Equipo'
+        supplier: 'Proveedor'
+        contract: 'No. de Contrato'
+        monto: 'Monto'
+        start_date: 'Fecha inicial'
+        end_date: 'Fecha final'
+        filter_by: 'Filtrar por fecha'
+        in_time: 'Solo vigentes'
+      body:
+        title_new_contract: 'Lista de resultado de Contratos'
+        device: 'Nombre de Equipo'
+        supplier: 'Proveedor'
+        contract: 'No. de Contrato'
+        monto: 'Monto'
+        start_date: 'Fecha inicial'
+        end_date: 'Fecha final'
+        pdf: 'Generar documento PDF'
+        xlsx: 'Generar documento Excel'
+    files:
+      load_files:
+        files: 'Elige el archivo que deseas almacenar'
+        msg_load_files: 'Por favor elige el documento que deseas almacenar en los archivos del sistema.'
+        back_files: 'Regresar a Archivos'
+        back_contracts: 'Regresar a Contratos'
+      list_files:
+        title_list_files: 'Almacenamiento de Archivos Generales'
+        upload_file: 'Subir Archivo'
+        name_file: 'Nombre del Archivo'
+        last_comments: 'Últimos Comentarios:'
+        add_comment: 'Agregar comentarios'
+        deleted_file: 'El archivo ha sido eliminado exitosamente'
+        not_deleted_file: 'El archivo no ha podido ser eliminado'
+        upload_file_ok: 'El archivo ha sido subido exitosamente'
+        upload_file_fail: 'El archivo no ha podido ser subido'
+      save_comments:
+        title_save_comments: 'Comentarios'
+        comments: 'Escribe tu comentario: '
+
+  layouts:
+    application:
+      title_system: Contratos
+      title_footer: Instituto de Neurobiologia UNAM
+    search:
+      menu: Menu
+      menu_1: Proveedores
+      menu_2: Equipos
+      menu_3: Departamentos
+      menu_4: Contratos
+      menu_5: Visitas
+      menu_6: Renovaciones
+      menu_7: Configuración
+      menu_8: Reportes
+      menu_9: Archivos
+      menu_logut: Cerrar sesión
+
+  add_supplier: Agregar Proveedor
+  add_location: Agregar Departamento
+  add_device: Agregar Equipo
+  add_contract: Agregar Contrato
+  add_siteview: Agregar Visita
+  add_renewal: Agregar Renovación
+  add_file: Agregar Archivo
+  search: Buscar
+  show_all: Mostrar todo
+  show: Mostrar
+  edit: Editar
+  delete: Eliminar
+  see: Ver
+  save: Guardar
+  previous: Anterior
+  next: Siguiente
+  back: Regresar
+  are_you_sure: ¿Está seguro de eliminar el registro?
+  si: Si
+  cancel: Cancelar
+  pdf: PDF
+  xlsx: Excel
+  will_paginate:
+    next_label: Siguiente
+    previous_label: Anterior
+
+  activerecord:
+    attributes:
+      catalogs/supplier:
+        business_name: 'Nombre de Compañía:'
+        contact: 'Contacto:'
+        phone: 'Teléfono:'
+        phone_office: 'Teléfono de oficina:'
+        email: 'Correo electrónico:'
+      catalogs/location:
+        department: 'Departamento:'
+        responsible: 'Responsable:'
+        email: 'Correo electrónico:'
+      catalogs/device:
+        name: 'Nombre de Equipo:'
+        unam_stock_number: 'No. de Inventario:'
+        location_id: 'Departamento:'
+        location: 'Departamento:'
+      system/contract:
+        device_id: 'Nombre de Equipo:'
+        supplier_id: 'Proveedor:'
+        contract_no: 'No. de Contrato:'
+        description: 'Descripción:'
+        start_date: 'Fecha inicial:'
+        end_date: 'Fecha final:'
+        device: 'Equipo:'
+        supplier: 'Proveedor:'
+      system/siteview:
+        renewal_id: 'ID de Renovación:'
+        visit_date: 'Fecha de visita:'
+        completed: 'Visita efectuada:'
+        renewal: 'ID de Renovación'
+      system/renewal:
+        contract_id: 'ID de Contrato:'
+        start_date: 'Fecha inicial:'
+        end_date: 'Fecha final:'
+        contract: 'No. de Contrato'
+
+    errors:
+      models:
+        catalogs/supplier:
+          attributes:
+            business_name:
+              blank: Introduce el nombre de la Compañía
+              taken: Esta Compañía ya ha sido registrada previamente
+            contact:
+              blank: Introduce el nombre del Contacto
+            phone:
+              blank: Introduce el número telefónico del Contacto
+            phone_office:
+              blank: Introduce el número de oficina del Contacto
+            email:
+              blank: Introduce el correo electrónico del Contacto
+        catalogs/device:
+          attributes:
+            unam_stock_number:
+              blank: Introduce el número de inventario
+              taken: No. de Inventario previamente registrado
+            name:
+              blank: Introduce el nombre
+            location_id:
+              blank: Introduce la ubicación
+        catalogs/location:
+          attributes:
+            department:
+              blank: Introduce el Departamento
+            responsible:
+              blank: Introduce el nombre del Responsable
+            email:
+              blank: Introduce el correo electrónico
+        system/contract:
+          attributes:
+            device_id:
+              blank: Introduce el nombre del Equipo
+            supplier_id:
+              blank: Introduce el nombre de proveedor
+            contract_no:
+              blank: Introduce el numero de contrato
+              taken: No. de Contrato registrado previamente
+            description:
+              blank: Introduce la descripción del contrato
+        system/siteview:
+          attributes:
+            renewal_id:
+              blank: Introduce el ID de contrato
+            visit_date:
+              blank: Introduce fecha válida
+        system/renewal:
+          attributes:
+            contract_id:
+              blank: Introduce el ID de contrato
+
+#es.activerecord.errors.models.system/renewal.attributes.contract_id.blank
+  devise:
+    failure:
+      already_authenticated: 'Ya iniciaste sesión.'
+      unauthenticated: 'Tienes que registrarte o iniciar sesión antes de continuar.'
+      unconfirmed: 'Tienes que confirmar tu cuenta antes de continuar.'
+      locked: 'Tu cuente está bloqueada.'
+      invalid: 'Usuario o contraseña inválidos.'
+      invalid_token: 'Token de autentificación inválido.'
+      timeout: 'Tu sesión ha expirado. Inicia sesión nuevamente.'
+      inactive: 'Tu cuenta aun no ha sido activada.'
+    sessions:
+      signed_in: 'Iniciaste sesión correctamente.'
+      signed_out: 'Cerraste sesión correctamente.'
+
+      new:
+        title_login: Iniciar sesión
+        login: Usuario
+        password: Contraseña
+        remember_me: Recuérdame
+        btn_login: Iniciar sesión
+
+    passwords:
+      send_instructions: 'Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos.'
+      updated: 'Tu contraseña fue cambiada correctamente. Has iniciado sesión.'
+      updated_not_active: 'Tu contraseña fue cambiada correctamente.'
+      send_paranoid_instructions: "Si tu email existe en el sistema, recibirás instrucciones para recuperar tu contraseña en él"
+    confirmations:
+      send_instructions: 'Recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
+      send_paranoid_instructions: 'Si tu email existe en el sistema, recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
+      confirmed: 'Tu cuenta fue confirmada. Has iniciado sesión.'
+    registrations:
+      signed_up: 'Bienvenido! Te has registrado correctamente.'
+      signed_up_but_unconfirmed: 'Te hemos enviado un email con instrucciones para que confirmes tu cuenta.'
+      signed_up_but_inactive: 'Te has registrado correctamente, pero tu cuenta aun no ha sido activada.'
+      signed_up_but_locked: 'Te has registrado correctamente, pero tu cuenta está bloqueada.'
+      updated: 'Actualizaste tu cuenta correctamente.'
+      update_needs_confirmation: "Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección."
+      destroyed: 'Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!'
+
+      new:
+        title_signin: Registrarse
+        login: Usuario
+        name: Nombre
+        email: Correo electrónico
+        btn_signin: Registrarse 
+
+    unlocks:
+      send_instructions: 'Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos'
+      unlocked: 'Tu cuenta ha sido desbloqueada. Inicia sesión para continuar.'
+      send_paranoid_instructions: 'Si tu cuenta existe, recibirás instrucciones para desbloquear tu cuenta en unos minutos'
+    omniauth_callbacks:
+      success: 'Te autentificaste correctamente con tu cuenta de %{kind}.'
+      failure: 'No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: %{reason}.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instrucciones de confirmación'
+      reset_password_instructions:
+        subject: 'Instrucciones de cambio de contraseña'
+      unlock_instructions:
+        subject: 'Instrucciones de desbloqueo'
+
+  date:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    - 
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %b"
+    month_names:
+    - 
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
+    order:
+    - :day
+    - :month
+    - :year

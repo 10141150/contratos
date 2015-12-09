@@ -1,0 +1,8 @@
+.container_general
+  .title_configuration
+    %h1= t('.title_save')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'nil' }    
+  .cuerpo_configuration
+    %h3= t('.current')
+    %p #{@file_yaml}

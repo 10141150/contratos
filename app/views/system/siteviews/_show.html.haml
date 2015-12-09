@@ -1,0 +1,37 @@
+.modal-header
+  %h3.modal-title
+    = t('.title_info_siteview')
+
+.modal-body
+  /%p#notice= notice
+  .row
+    .col-xs-6.col-md-4
+      %p
+        %b
+          = t('.renewal_id')
+    .col-xs-12.col-md-8
+      %p       
+        = @system_siteview.renewal.contract.contract_no
+    .col-xs-6.col-md-4
+      %p
+        %b 
+          = t('.visit_date')
+    .col-xs-12.col-md-8
+      %p 
+        = @system_siteview.visit_date
+    .col-xs-6.col-md-4
+      %p
+        %b 
+          = t('.completed')
+    .col-xs-12.col-md-8
+      %p
+        - if @system_siteview.completed == true
+          Efectuada
+        - else
+          No efectuada 
+        /= @system_siteview.completed
+    
+.modal-footer
+  = link_to t('edit'), edit_system_siteview_path(@system_siteview), remote: true, class: "btn btn-sm btn-tss"
+  = link_to t('back'), "#{@page}", class: "btn btn-sm btn-tss"
+

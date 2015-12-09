@@ -1,0 +1,12 @@
+.container-fluid
+  = simple_form_for @catalogs_location, remote: true, html: {class: 'form-horizontal'}, wrapper: :horizontal_form do |f|
+    
+    = f.error_notification
+    = f.input :department, required: true
+    = f.input :responsible, required: true
+    = f.input :email, required: true    
+    .modal-footer
+      = f.button :submit, t('save'), class:"btn btn-sm btn-tss col-md-3 col-md-offset-3"
+      - if @eureka.nil? == false then
+        = link_to t('show'), @catalogs_location, remote: true, class: "btn btn-sm btn-tss"
+      = link_to t('back'), catalogs_locations_path, class: "btn btn-sm btn-tss"    

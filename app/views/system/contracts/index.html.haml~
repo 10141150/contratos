@@ -1,0 +1,66 @@
+.container_general
+  .title_contract
+    %h1
+      = t('.title_contract')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'contracts', name: 'add_contract', helper: new_system_contract_path }
+  .cuerpo_comtract
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th
+            %th= t('.device')
+            %th= t('.supplier')            
+            %th= t('.start_date')
+            %th= t('.end_date')
+            %th.price= t('.monto')
+            %th
+            %th
+            %th
+            %th
+            %th
+            %th
+
+        %tbody
+          - @system_contracts.each do |system_contract|
+            %tr
+              %td{:align => "center"}
+                - if system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.try(:vigencia) || "-" == :active
+                  %i.fa.fa-exclamation-circle.fa-lg{ :style => "color:yellowgreen", :title => t('.active')}
+                - if system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.try(:vigencia) == :finished
+                  %i.fa.fa-exclamation-circle.fa-lg{:style => "color:orange", :title => t('.finished')}
+                - if system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.try(:vigencia) == :to_expire
+                  %i.fa.fa-exclamation-circle.fa-lg{:style => "color:red", :title => t('.to_expire')}
+              %td{title: system_contract.device.name}= system_contract.device.short_name
+              %td{title: system_contract.supplier.business_name}= system_contract.supplier.short_name
+              %td= system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.try(:start_date)
+              %td= system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.try(:end_date)
+              %td.price= number_to_currency(system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.try(:monto))
+              %td= link_to '', new_system_siteview_path(:page => "contracts", :renewal_id => system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last), class:"btn btn-sm btn-tss fa fa-plus", title: t('.add_visit'), remote: true
+              %td= link_to '', system_files_load_files_path(:renewal_id => system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last), class: "btn btn-sm btn-tss fa fa-upload", title: t('add_file')
+              %td  
+                %a.btn.btn-sm.btn-tss.fa.fa-file-pdf-o{:href => "/files/#{system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.try(:id)}.pdf", :target => "_blank", title: t('.download_pdf')}
+              %td= link_to '', new_system_renewal_path(:contract_id => system_contract.id), class:"btn btn-sm btn-tss fa fa-refresh", title: t('.renew_contract'), remote: true
+              %td= link_to '', system_contract, class: "btn btn-sm btn-tss fa fa-eye", title: t('see'), remote: true 
+              %td= link_to '', edit_system_contract_path(system_contract), class: "btn btn-sm btn-tss fa fa-pencil-square-o", title: t('edit'), remote: true
+              %td= link_to '', system_contract_delete_path(id: system_contract, viewer: 'contracts'), class: "btn btn-sm btn-tss fa fa-trash-o", title: t('delete'), remote: true
+
+
+  .paginacion  
+    .apple_pagination
+      = will_paginate @system_contracts, :container => false
+    %br
+
+  #contract-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-contract-modal.modal-content
+  #delete-modal.modal.fade
+    .modal-dialog
+      #inner-delete-modal.modal-content
+  #renewal-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-renewal-modal.modal-content
+  #siteview-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-siteview-modal.modal-content

@@ -1,0 +1,18 @@
+.container_general
+  .title_file
+    %h2 Subir archivo
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'nil' } 
+  .cuerpo_file_load
+    %h3= t('.msg_load_files')
+    %br/
+    = simple_form_for :files, url: system_files_load_files_path(:renewal_id => @renewal_id, html: {multipart: true}), wrapper: :horizontal_form do |f|
+      = f.input :file, as: :file, required: false, label: false, input_html: { class: "btn btn-block"}
+      %br/
+      = f.button :submit, 'Subir archivo' , class:"btn btn-ttc btn-block", wrapper: :horizontal_form, url: system_contracts_path
+      = link_to t('.back_files'), system_files_list_files_path, class:"btn btn-ttc btn-block", wrapper: :horizontal_form
+      = link_to t('.back_contracts'), system_contracts_path, class:"btn btn-ttc btn-block", wrapper: :horizontal_form
+      
+    - if @formato_erroneo
+      %div
+        %p El formato ingresado es incorrecto. Usted sólo puede subir archivos .pdf, .doc y .docx

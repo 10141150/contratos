@@ -1,0 +1,124 @@
+.container_general
+  .title_reporter
+    %h2= t('.title_reporter')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'nil' }      
+  %div
+  %h4 Seleccione los datos del reporte
+  %br/
+  .cuerpo_reporter
+    .form_group
+      .texto
+        = form_tag({:controller => "reporter", :action => "index"}, :remote => true, :method => "GET", class: "form-inline") do
+          %br/
+          .city
+            .col-xs-6.col-sm-3 
+              = t('.filter_by')
+            .col-xs-6.col-sm-3  
+              = check_box_tag "use_date", "1", true
+          %br/
+          %br/
+          .city
+            .col-xs-6.col-sm-3 
+              %th= t('.start_date')
+            .col-xs-6.col-sm-3
+              = date_select "start_date", "", :size => 30, :maxlenght => 50, :placeholder => t('.search')  
+            .col-xs-6.col-sm-3
+              %th= t('.end_date')
+            .col-xs-6.col-sm-3 
+              = date_select "end_date", "", :size => 30, :maxlenght => 50, :placeholder => t('.search')
+          %br/
+          .city
+            .col-xs-6.col-sm-3
+              %th= t('.supplier')
+            .col-xs-6.col-sm-3
+              = select_tag 'supplier', options_from_collection_for_select(@catalog_supplier, "id", "business_name"), include_blank: "Seleccione Proveedor..."
+          %br/
+          .city
+            .col-xs-6.col-sm-3
+              %th= t('.device')
+            .col-xs-6.col-sm-3
+              = select_tag 'device', options_from_collection_for_select(@catalog_device, "id", "name"), include_blank: "Seleccione Equipo..."
+          %br/
+          .city
+            .col-xs-6.col-sm-3
+              %th= t('.contract')
+            .col-xs-6.col-sm-3
+              = select_tag 'contract_param_no', options_from_collection_for_select(@system_contract, "id", "contract_no"), include_blank: "Seleccione Contrato..."
+          %br/
+          %br/
+          .city
+            .col-xs-6.col-sm-3
+              = t('.in_time')
+            .col-xs-6.col-sm-3
+              = check_box_tag "active"
+          %br/
+          %br/
+          .city
+            .col-xs-6.col-sm-3
+              = select_tag 'renewal', options_from_collection_for_select(@catalog_renewals, "id", "contract_id"), include_blank: "Seleccione Renovacion...", :hidden => true
+          %br/
+          %br/        
+          .col-xs-6.col-sm-3  
+          = submit_tag t('search'), class:"btn btn-ttc btn-sm"
+          %br/
+          %br/
+    %br/
+    %br/
+    %div
+    :javascript
+      $(document).ready(function() {
+        $('#contract_param_no').change(function() {
+          $.ajax({
+            url: "clean_device_supplier",
+            data: {
+              contract_param_no : $('#contract_param_no').val()
+            },
+            dataType: "script"
+          });
+        });
+      });
+
+    :javascript
+      $(document).ready(function() {
+        $('#supplier').change(function() {
+          $.ajax({
+            url: "clean_device_contract",
+            data: {
+              supplier : $('#supplier').val()
+            },
+            dataType: "script"
+          });
+        });
+      });
+
+    :javascript
+      $(document).ready(function() {
+        $('#device').change(function() {
+          $.ajax({
+            url: "clean_supplier_contract",
+            data: {
+              device : $('#device').val()
+            },
+            dataType: "script"
+          });
+        });
+      });
+
+    :javascript
+      $(document).ready(function() {
+        $('#use_date').click(function() {
+          $('select#end_date__3i').attr('disabled',! this.checked);
+          $('select#end_date__2i').attr('disabled',! this.checked);
+          $('select#end_date__1i').attr('disabled',! this.checked);
+          $('select#start_date__3i').attr('disabled',! this.checked);
+          $('select#start_date__2i').attr('disabled',! this.checked);
+          $('select#start_date__1i').attr('disabled',! this.checked);
+        });
+      });
+    #divprueba  
+    %br/
+    %br/  
+    #new-modal-table.modal.fade
+      .modal-dialog.modal-lg
+        #new_dynamic_table.modal-content           

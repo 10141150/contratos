@@ -1,0 +1,11 @@
+.container_general
+  .title_file
+    %h2= t('.title_save_comments')
+  .barra_busqueda
+    = render partial: 'layouts/search', locals: { viewer: 'nil' }
+  .cuerpo_file 
+    = simple_form_for :files, url: system_files_save_comments_path, :enforce_utf8 => true do |f|
+      = f.input :comentarios, as: :text, label: t('.comments'), input_html: { :value => @comentarios, :class => 'col-md-8 form-horizontal', :rows => '10', :class => 'form-control'}
+      %br/
+      = f.button :submit, t('save') , class:"btn btn-ttc"     
+      = link_to t('back') , system_files_list_files_path, class:"btn btn-ttc"        

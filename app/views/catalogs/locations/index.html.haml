@@ -1,0 +1,43 @@
+.container_general
+  .title_locations
+    %h1
+      = t('.title_location')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'locations', name: 'add_location', helper: new_catalogs_location_path }
+  .cuerpo_locations
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th 
+              = t('.department')
+            %th 
+              = t('.responsible')
+            %th 
+              = t('.email')
+            %th
+            %th
+            %th
+        %tbody
+          - @catalogs_locations.each do |catalogs_location|
+            %tr
+              %td{title: catalogs_location.department}= catalogs_location.short_name
+              %td= catalogs_location.responsible
+              %td= catalogs_location.email
+              %td
+                = link_to '', catalogs_location, class: "btn btn-sm btn-tss fa fa-eye", title: t('see'), remote: true
+              %td
+                = link_to '', edit_catalogs_location_path(catalogs_location), class: "btn btn-sm btn-tss fa fa-pencil-square-o", title: t('edit'), remote: true
+              %td
+                = link_to '', catalogs_location_delete_path(id: catalogs_location, viewer: 'locations'), class: "btn btn-sm btn-tss fa fa-trash-o", title: t('delete'), remote: true
+  .paginacion
+    .apple_pagination
+      = will_paginate @catalogs_locations, :container => false 
+    %br
+    /= link_to t('.add_location'), new_catalogs_location_path, class: "btn btn-tss", remote: true
+  #location-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-location-modal.modal-content
+  #delete-modal.modal.fade
+    .modal-dialog
+      #inner-delete-modal.modal-content

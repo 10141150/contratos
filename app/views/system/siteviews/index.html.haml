@@ -1,0 +1,48 @@
+.container_general
+  .title_siteview
+    %h1
+      = t('.title_siteview')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'siteviews', name: 'add_siteview', helper: new_system_siteview_path }
+  .cuerpo_siteview
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th 
+              = t('.renewal_id')
+            %th 
+              = t('.visit_date')
+            %th 
+              = t('.completed')
+            %th
+            %th
+            %th
+
+        %tbody
+          - @system_siteviews.each do |system_siteview|
+            %tr
+              %td= system_siteview.renewal.contract.short_name
+              %td= system_siteview.visit_date
+              /%td= system_siteview.completed
+              - if system_siteview.completed == true
+                %td Efectuada
+              - else
+                %td No efectuada    
+              %td= link_to '', system_siteview, class: "btn btn-sm btn-tss fa fa-eye", title: t('see'), remote: true
+              %td= link_to '', edit_system_siteview_path(system_siteview), class: "btn btn-sm btn-tss fa fa-pencil-square-o", title: t('edit'), remote: true
+              %td= link_to '', system_siteview_delete_path(id: system_siteview, viewer: 'siteviews'), class: "btn btn-sm btn-tss fa fa-trash-o", title: t('delete'), remote: true
+
+  .paginacion  
+    .apple_pagination
+      = will_paginate @system_siteviews, :container => false
+
+    %br
+    /= link_to t('.add_siteview'), new_system_siteview_path, class:"btn btn-tss", remote: true
+
+  #siteview-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-siteview-modal.modal-content
+  #delete-modal.modal.fade
+    .modal-dialog
+      #inner-delete-modal.modal-content

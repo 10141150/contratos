@@ -1,0 +1,63 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .nav-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar      
+       
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %form.navbar-form.navbar-left        
+        - if @aux.nil?
+          %i.fa.fa-search.fa-fw{:style => "display:none"}
+          = form_tag(class: "form-inline") do
+            .form-group
+              = label_tag "codigo", t('search'), class: "sr-only"
+              = text_field_tag "codigo", "", :size => 30, :maxlenght => 50, :placeholder => t('search'), disabled: true, :style => "display:none"
+              = submit_tag t('search'), class:"btn btn-ttc", disabled: true, :style => "display:none"
+              = submit_tag t('show_all'), class:"btn btn-ttc", disabled: true, :style => "display:none"
+        - else
+          %i.fa.fa-search.fa-fw
+          = form_tag({:controller => viewer, :action => "index"}, :method => "get", class: "form-inline") do
+            .form-group
+              = label_tag "codigo", t('search'), class: "sr-only"
+              = text_field_tag "codigo", "", :size => 30, :maxlenght => 50, :placeholder => t('search')
+              = submit_tag t('search'), class:"btn btn-ttc"
+              = submit_tag t('show_all'), class:"btn btn-ttc"
+              - if name == 'add_siteview' or name == 'add_renewal'
+                = link_to t(name), helper, class:"btn btn-ttc", :style => "display:none", remote: true
+              - else 
+                = link_to t(name), helper, class:"btn btn-ttc", remote: true              
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            = t('.menu')
+            (
+            = current_admin.login
+            )         
+            %span.caret             
+          %ul.dropdown-menu
+            %li
+              = link_to t('.menu_1'), catalogs_suppliers_path
+            %li
+              = link_to t('.menu_2'), catalogs_devices_path
+            %li
+              = link_to t('.menu_3'), catalogs_locations_path
+            %li.divider{:role => "separator"}
+            %li
+              = link_to t('.menu_4'), system_contracts_path  
+            %li
+              = link_to t('.menu_5'), system_siteviews_path
+            %li
+              = link_to t('.menu_6'), system_renewals_path
+            %li
+              = link_to t('.menu_7'), system_configuration_configure_path
+            %li
+              = link_to t('.menu_8'), system_reporter_index_path
+            %li 
+              = link_to t('.menu_9'), system_files_list_files_path
+              /= link_to t('.menu_10'), system_files_load_files_path   
+            %li.divider{:role => "separator"}
+            %li
+              = link_to( t('.menu_logut'), destroy_admin_session_path, :method => 'delete')

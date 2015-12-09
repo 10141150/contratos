@@ -1,0 +1,23 @@
+.container_general
+  .title_configuration
+    %h1= t('.title_configure')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'nil' }    
+  .cuerpo_configuration
+    .form-group
+      = simple_form_for :configure, url: system_configuration_save_path, :enforce_utf8 => true do |f|    
+        .row
+          .col-xs-8
+            - @mailers.each do |key, value|
+              - if @traduccion.nil? == true or @traduccion.key?(key) == false
+                = f.label "campo_etiqueta", key
+                %br/
+                = f.input_field @mailers.key(value).to_s, :value => @mailers.fetch(key), class:"form-control"
+                %br/                                   
+              - elsif @traduccion.key?(key) == true
+
+                = f.label "campo_etiqueta", @traduccion.fetch(key).values_at("name").to_s.delete('[]\\""')      
+                = f.input_field @mailers.key(value).to_s, :value => @mailers.fetch(key), class:"form-control"
+                = f.hint @traduccion.fetch(key).values_at("hint").to_s.delete('[]\\""')
+            %br/    
+            = f.button :submit, t('save') , class:"btn btn-ttc"

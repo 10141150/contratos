@@ -1,0 +1,33 @@
+@import 'font-awesome';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.container_session {
+    background-image:url('http://images.forwallpaper.com/files/thumbs/preview/29/296414__gears_p.jpg');
+    height: 1100px;
+    background-repeat:repeat;
+  }
+.container_login {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;  
+
+}
+
+.tittle_session{
+  background-color: rgb(50,76,115);
+  color: white;
+  padding: 10px;
+  /*border-radius: 3px;*/
+}
+.login {
+  padding-top: 10%;
+  padding-bottom: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: rgb(214,232,243);
+  //background-color: rgb(248,198,30);
+  //height: 300px;  
+}

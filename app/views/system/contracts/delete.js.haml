@@ -1,0 +1,2 @@
+$("#inner-delete-modal").html("#{escape_javascript(render 'layouts/delete', locals: {viewer: 'contracts',id: @id})}")
+$("#delete-modal").modal({show: true, backdrop: 'static', keyboard: false})

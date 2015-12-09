@@ -1,0 +1,29 @@
+.container-fluid
+  = simple_form_for @system_siteview, remote: true, html: {class: 'form-horizontal'}, wrapper: :horizontal_form do |f|
+    
+    = f.error_notification
+    - if @renewal_id.nil? || @renewal_id.empty?
+      = f.association :renewal, :as => :hidden, label_method: :id, value_method: :id
+    - else
+      = f.input :renewal_id, :input_html => { :value => @renewal_id}, :as => :hidden
+    .col-xs-4.col-sm-3
+      = f.label :visit_date
+    = f.input_field :visit_date, as: :datetime, wrapper_html: { class: 'form-inline' }
+    = f.input :completed, required: true, input_html: { class: 'col-md-7 col-md-offset-7'}
+    .col-xs-4.col-sm-3 
+      = f.label t('.remember_day')
+    = datetime_select "recordar", "", :size => 30, :maxlenght => 50, :placeholder => t('.search'), required: true
+    %br/
+    %br/
+    .col-xs-4.col-sm-3 
+      = f.label t('.email_extra')
+    = text_field_tag "notificaciones"
+    %br/
+    %br/
+    .modal-footer    
+      = f.button :submit, t('save'), :page => @page, class: "btn btn-sm btn-tss col-md-3 col-md-offset-3", data: {disable_with: "Submitting..."}
+      - if @eureka.nil? == false then
+        = link_to t('back'), system_siteviews_path, class: "btn btn-sm btn-tss"        
+      - else
+        = link_to t('show'), @system_siteview, remote: true, class: "btn btn-sm btn-tss"
+      = link_to t('back'), system_contracts_path, class: "btn btn-sm btn-tss"

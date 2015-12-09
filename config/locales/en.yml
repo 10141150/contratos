@@ -1,0 +1,270 @@
+en:
+  catalogs:
+    suppliers:
+      create:
+        created: Supplier was added succesfully.
+      update:
+        updated: Supplier was updated succesfully.
+      destroy:
+        destroyed: Supplier was deleted succesfully.
+      index:
+        title_supplier: Suppliers
+        business: Bussines Name
+        contact: Contact
+        phone: Phone
+        email: Email        
+      show:
+        title_info_supplier: Supplier's information
+        business: Bussines name
+        contact: Contact
+        phone: Phone
+        email: Email
+      edit:
+        title_edit_supplier: Edit Supplier
+      new:
+        title_new_supplier: New Supplier
+    locations:
+      create:
+        created: Location was added succesfully.
+      update:
+        updated: Location was updated succesfully.
+      destroy:
+        destroyed: Location was deleted succesfully
+      index:
+        title_location: Locations
+        department: Departament
+        responsible: Responsible 
+        email: Email
+      show:
+        title_info_location: Location's Information
+        department: Departament
+        responsible: Responsible
+        email: Email      
+      edit:
+        title_edit_location: Edit location
+      new:
+        title_new_location: New location
+    devices:
+      create: 
+        created: Device was added succesfully.
+      update:
+        updated: Device was updated succesfully.
+      destroy:
+        destroyed: Device was deleted succesfully.
+      index:
+        title_device: Devices
+        name: Device
+        unam_stock_number: Stock Number
+        location_id: Location        
+      show:
+        title_info_device: Device's information
+        name: Device
+        unam_stock_number: Stock Number
+        location_id: Location
+      edit:
+        title_edit_device: Edit device
+      new:
+        title_new_device: New device
+
+  system:
+    contracts:
+      create: 
+        created: Contract was added succesfully.
+      update:
+        updated: Contract was updated succesfully.
+      destroy:
+        destroyed: Contract was deleted succesfully.
+      index:
+        title_contract: Contracts
+        device: Device
+        supplier: Supplier
+        start_date: Start date
+        end_date: End date
+        contract_no: COntract Number
+      show:
+        title_info_contract: Contract's information
+        device: Device
+        supplier: Supplier
+        start_date: Start date
+        end_date: End date
+        contract_no: COntract Number
+      edit:
+        title_edit_contract: Edit Contract
+      new:
+        title_new_contract: New Contract
+    siteviews:
+      create: 
+        created: Siteview was added succesfully.
+      update:
+        updated: Siteview was updated succesfully.
+      destroy:
+        destroyed: Siteview was deleted succesfully.
+      index:
+        title_siteview: Siteviews
+        contract_id: Contract
+        visit_date: Visit date
+        completed: Completed    
+      show:
+        title_info_siteview: Siteview's information
+        contract_id: Contract
+        visit_date: Visit date
+        completed: Completed     
+      edit:
+        title_edit_siteview: Edit Siteview
+      new:
+        title_new_siteview: New Siteview
+
+  layouts:
+    application:
+      title_system: Contracts
+      title_footer: Instituto de Neurobiologia UNAM
+    search:
+      search: Search
+      show_all: Show all
+      menu: Menu
+      menu_1: Suppliers
+      menu_2: Devices
+      menu_3: Locations
+      menu_4: Contracts
+      menu_logut: Log out
+  add_supplier: Add Supplier
+  add_location: Add Location
+  add_device: Add Device
+  add_contract: Add Contract
+  add_siteview: Add Siteview
+
+
+
+  search: Search
+  show_all: Show all
+  show: Show
+  edit: Edit
+  delete: Delete
+  see: See
+  save: Save
+  previous: Previous
+  next: Next
+  back: Back
+
+  will_paginate:
+    next_label: Next
+    previous_label: Previous
+
+  activerecord:
+    attributes:
+      catalogs/supplier:
+        business_name: Bussines name
+        contact: Contact
+        phone: Phone
+        email: Email
+      catalogs/location:
+        department: Departament
+        responsible: Responsible
+        email: Email
+      catalogs/device:
+        name: Device
+        unam_stock_number: Stock Number
+        location_id: Location
+      system/contract:
+        device_id: Device
+        supplier_id: Supplier
+        start_date: Start date
+        end_date: End date
+        contract_no: Contract
+      system/siteview:
+        contract_id: Contract
+        visit_date: Visit date
+        completed: Completed
+    errors:
+      models:
+        catalogs/supplier:
+          attributes:
+            business_name:
+              blank: Please enter the information.
+            contact:
+              blanck: Please enter the information.
+            phone:
+              blank: Please enter the information.
+            email:
+              blank: Please enter the information.
+        catalogs/device:
+          attributes:
+            unam_stock_number:
+              blank: Please enter the information.
+            name:
+              blank: Please enter the information.
+            location_id:
+              blank: Please enter the information.
+        catalogs/location:
+          attributes:
+            department:
+              blank: Please enter the information.
+            responsible:
+              blank: Please enter the information.
+            email:
+              blank: Please enter the information.
+        system/contract:
+          attributes:
+            device_id:
+              blank: Please enter the information.
+            supplier_id:
+              blank: Please enter the information.
+            contract_no:
+              blank: Please enter the information.
+        system/siteview:
+          attributes:
+            contract_id:
+              blank: Please enter the information. 
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    - 
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%Y-%m-%d"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names:
+    - 
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day

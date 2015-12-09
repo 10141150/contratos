@@ -1,0 +1,92 @@
+.modal-header
+  %h3.modal-title
+    = t('.title_info_contract')
+.modal-body
+  /%p#notice= notice
+  .row
+    .col-xs-6.col-md-4
+      %p
+        %b
+          = t('.contract_no')
+    .col-xs-12.col-md-8
+      %p       
+        = @system_contract.contract_no
+    .col-xs-6.col-md-4  
+      %p
+        %b
+          = t('.description')
+    .col-xs-12.col-md-8
+      .div_modal 
+        %p 
+          = @system_contract.description
+    .col-xs-6.col-md-4 
+      %p
+        %b
+          = t('.device')
+    .col-xs-12.col-md-8
+      %p  
+        = @system_contract.device.name
+    .col-xs-6.col-md-4  
+      %p
+        %b
+          = t('.supplier')
+    .col-xs-12.col-md-8
+      %p     
+        = @system_contract.supplier.business_name
+    .col-xs-6.col-md-4  
+      %p
+        %b
+          = t('.monto')
+    .col-xs-12.col-md-8
+      %p     
+        = number_to_currency(@system_contract.Renewals.sort_by{ |hsh| hsh[:start_date] }.last.monto)
+.cuerpo_comtract
+  - if @active_renewal.nil?
+    %p{'align' => 'center'}= t('.msg_expired')
+  - else
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th
+            %th= t('.contract_no')
+            %th= t('.start_date')
+            %th= t('.end_date')
+            %th
+        %tbody
+          %tr
+            %td
+              - if @active_renewal.vigencia == :active
+                %i.fa.fa-exclamation-circle.fa-lg{ :style => "color:yellowgreen", :title => t('.active')}
+                /%i.fa.fa-exclamation{class: "btn btn-xs btn-success", title: t('.active')}
+              - if @active_renewal.vigencia == :finished
+                %i.fa.fa-exclamation-circle.fa-lg{:style => "color:orange", :title => t('.finished')}
+                /%i.fa.fa-exclamation{class: "btn btn-xs btn-warning", title: t('.finished')}
+              - if @active_renewal.vigencia == :to_expire
+                %i.fa.fa-exclamation-circle.fa-lg{:style => "color:red", :title => t('.to_expire')}
+                /%i.fa.fa-exclamation{class: "btn btn-xs btn-danger", title: t('.to_expire')}  
+            %td= @active_renewal.contract.contract_no
+            %td= @active_renewal.start_date
+            %td= @active_renewal.end_date
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th
+            %th= t('.contract_no')
+            %th= t('.visit_date')
+            %th
+        %tbody
+          - @active_renewal.Siteviews.each do |visit|
+            %tr
+              %td
+                - if visit.status_visit == :visited
+                  %i.fa.fa-exclamation-circle.fa-lg{:style => "color:yellowgreen", :title => t('.visited')}
+                - if visit.status_visit == :not_visited
+                  %i.fa.fa-exclamation-circle.fa-lg{:style => "color:red", :title => t('.not_visited')}
+              %td= visit.renewal.contract.contract_no
+              %td= visit.visit_date
+              %td
+.modal-footer
+  = link_to t('edit'), edit_system_contract_path(@system_contract), remote: true, class: "btn btn-sm btn-tss"
+  = link_to t('back'), system_contracts_path, class: "btn btn-sm btn-tss"

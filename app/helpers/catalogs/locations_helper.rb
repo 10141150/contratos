@@ -1,0 +1,2 @@
+module Catalogs::LocationsHelper
+end

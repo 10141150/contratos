@@ -1,0 +1,47 @@
+.modal-header
+  %h3.modal-title
+    = t('.title_info_supplier')
+
+.modal-body
+  /%p#notice= notice
+  .row
+    .col-xs-6.col-md-4
+      %p
+        %b
+          = t('.business')
+    .col-xs-12.col-md-8
+      %p       
+        = @catalogs_supplier.business_name
+    .col-xs-6.col-md-4    
+      %p
+        %b
+          = t('.contact')
+    .col-xs-12.col-md-8
+      %p       
+        = @catalogs_supplier.contact
+    .col-xs-6.col-md-4    
+      %p
+        %b 
+          = t('.phone')
+    .col-xs-12.col-md-8
+      %p       
+        = @catalogs_supplier.phone
+    .col-xs-6.col-md-4    
+      %p
+        %b 
+          = t('.phone_office')
+    .col-xs-12.col-md-8
+      %p       
+        = @catalogs_supplier.phone_office        
+    .col-xs-6.col-md-4    
+      %p
+        %b 
+          = t('.email')
+    .col-xs-12.col-md-8
+      %p             
+        = @catalogs_supplier.email
+
+.modal-footer
+  = link_to t('edit'), edit_catalogs_supplier_path(@catalogs_supplier), class: "btn btn-sm btn-tss", remote: true
+  = link_to t('back'), catalogs_suppliers_path, class: "btn btn-sm btn-tss"
+

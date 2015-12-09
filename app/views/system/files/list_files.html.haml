@@ -1,0 +1,37 @@
+.container_general
+  .title_file
+    %h2= t('.title_list_files')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'nil' }   
+  .cuerpo_file
+    - if @mensaje
+      / Mensaje enviado de la anterior página
+      %div
+        %strong
+          = @mensaje
+    .table-responsive
+      %table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th= t('.name_file')            
+            %th  
+            %th  
+            %th        
+        %tbody
+          - @archivos.each do |a|
+            - if a == "." or a == ".." then next end;
+            %tr            
+              %td= a
+              %td{:align => "center"}
+                %a.btn.btn-sm.btn-tss.fa.fa-eye{:href => "/files/#{a}", :target => "_blank", title: t('see')}
+              %td{:align => "center"}        
+                \#{link_to '', {:controller => "files", :action => "delete_files", :archivo_a_borrar => a}, {:method => "post", :confirm => "Seguro?", class: "btn btn-sm btn-tss fa fa-trash-o", title: t('delete') }}
+              %td 
+    / Acá se guarda el nombre del archivo antes de que el formularo sea enviado
+    / %hr/
+    / / Comentarios guardados por el usuario.
+    / %h2= t('.last_comments')
+    / %br/
+    / %div
+    / %pre= @comentarios;  
+    / = link_to "Agregar comentarios", system_files_save_comments_path, class:"btn btn-ttc"

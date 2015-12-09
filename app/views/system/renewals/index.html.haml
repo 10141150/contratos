@@ -1,0 +1,49 @@
+.container_general
+  .title_renewal
+    %h1 
+      = t('.title_renewals')
+  .barra_busqueda
+    = render partial: 'layouts/search',locals: { viewer: 'renewals', name: 'add_renewal', helper: new_system_renewal_path }
+  .cuerpo_renewal
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th= t('.device')
+            %th= t('.supplier')          
+            %th= t('.contract')
+            %th= t('.start_date')
+            %th= t('.end_date')
+            %th= t('.monto')
+            %th
+            %th
+            %th
+
+        %tbody
+          - @system_renewals.each do |system_renewal|
+            %tr
+              %td{title: system_renewal.contract.device.name}= system_renewal.contract.device.short_name
+              %td{title: system_renewal.contract.supplier.business_name}= system_renewal.contract.supplier.short_name      
+              %td= system_renewal.contract.contract_no
+              %td= system_renewal.start_date
+              %td= system_renewal.end_date
+              %td= number_to_currency(system_renewal.monto)
+              %td= link_to '', system_renewal, class: "btn btn-sm btn-tss fa fa-eye", title: t('see'), remote: true
+              %td= link_to '', edit_system_renewal_path(system_renewal), class: "btn btn-sm btn-tss fa fa-pencil-square-o", title: t('edit'), remote: true
+              %td= link_to '', system_renewal_delete_path(id: system_renewal, viewer: 'renewals'), class: "btn btn-sm btn-tss fa fa-trash-o", title: t('delete'), remote: true
+
+  .paginacion
+    .apple_pagination
+      = will_paginate @system_renewals, :container => false                        
+
+    %br
+
+  #renewal-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-renewal-modal.modal-content
+  #delete-modal.modal.fade
+    .modal-dialog
+      #inner-delete-modal.modal-content
+  #siteview-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-siteview-modal.modal-content

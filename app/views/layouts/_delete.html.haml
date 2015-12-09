@@ -1,0 +1,12 @@
+.modal-header
+  %h3.modal-title
+    = t('delete')
+
+.modal-body
+  %h4.modal-title
+    = t('are_you_sure')
+
+.modal-footer
+  = link_to t('si'), {:controller => @viewer, :action => 'destroy',:id => @id}, :method => :delete, class: "btn btn-sm btn-tss"
+  = link_to t('cancel'), {:controller => @viewer, :action => 'index' }, :method => :get, class: "btn btn-sm btn-tss"
+

@@ -1,0 +1,51 @@
+.container_general
+  .title_supplier
+    %h1#supplier
+      = t('.title_supplier')
+  .barra_busqueda    
+    = render partial: 'layouts/search',locals: { viewer: 'suppliers', name: 'add_supplier', helper: new_catalogs_supplier_path}
+  .cuerpo_suppliers
+    .table-responsive
+      %table.table.table-striped.table-condensed
+        %thead
+          %tr
+            %th
+              = t('.business')
+            %th
+              = t('.contact')
+            %th
+              = t('.phone')
+            %th
+              = t('.phone_office')
+            %th
+              = t('.email')
+            %th
+            %th
+            %th
+        %tbody
+          - @catalogs_suppliers.each do |catalogs_supplier|
+            %tr
+              %td{title: catalogs_supplier.business_name}= catalogs_supplier.short_name
+              %td= catalogs_supplier.contact
+              %td= number_to_phone(catalogs_supplier.phone)
+              %td= number_to_phone(catalogs_supplier.phone_office)
+              %td= catalogs_supplier.email
+              %td
+                = link_to '', catalogs_supplier, class: "btn btn-sm btn-tss fa fa-eye", title: t('see')  , remote: true
+              %td
+                = link_to '', edit_catalogs_supplier_path(catalogs_supplier), class: "btn btn-sm btn-tss fa fa-pencil-square-o", title: t('edit'), remote: true
+              %td
+                = link_to '', catalogs_supplier_delete_path(id: catalogs_supplier, viewer: 'suppliers'), class: "btn btn-sm btn-tss fa fa-trash-o", title: t('delete'), remote: true
+
+
+  .paginacion  
+    .apple_pagination
+      = will_paginate @catalogs_suppliers, :container => false
+    %br
+    /= link_to t('add_supplier'), new_catalogs_supplier_path, class:"btn btn-tss", remote: true
+  #supplier-modal.modal.fade
+    .modal-dialog.modal-lg
+      #inner-supplier-modal.modal-content
+  #delete-modal.modal.fade
+    .modal-dialog
+      #inner-delete-modal.modal-content
